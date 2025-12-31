@@ -17,7 +17,7 @@ import {
   LayoutGrid,
   GraduationCap
 } from "lucide-react";
-import qualityHeroImage from "@/assets/quality-hero.jpg";
+import heroQualidadeImg from "@/assets/hero-qualidade.jpg";
 
 const certifications = [
   {
@@ -139,7 +139,7 @@ const Qualidade = () => {
         {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${qualityHeroImage})` }}
+          style={{ backgroundImage: `url(${heroQualidadeImg})` }}
         />
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/85 via-primary-dark/80 to-primary/75" />

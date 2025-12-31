@@ -11,7 +11,11 @@ import {
   CheckCircle,
   Award,
   Recycle,
-  Scale
+  Scale,
+  Zap,
+  RefreshCw,
+  LayoutGrid,
+  GraduationCap
 } from "lucide-react";
 import qualityHeroImage from "@/assets/quality-hero.jpg";
 
@@ -55,11 +59,23 @@ const sustainabilityPractices = [
   "Formação contínua em práticas ambientais",
 ];
 
-const partnerLogos = [
-  { name: "Caterpillar", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/Caterpillar_logo.svg/200px-Caterpillar_logo.svg.png" },
-  { name: "Siemens", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Siemens-logo.svg/200px-Siemens-logo.svg.png" },
-  { name: "ABB", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/ABB_logo.svg/200px-ABB_logo.svg.png" },
-  { name: "Schneider Electric", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Schneider_Electric_2007.svg/200px-Schneider_Electric_2007.svg.png" },
+const partnerCategories = [
+  { 
+    icon: Zap, 
+    title: "Fabricantes de geradores industriais" 
+  },
+  { 
+    icon: RefreshCw, 
+    title: "Fornecedores de compressores de qualidade" 
+  },
+  { 
+    icon: LayoutGrid, 
+    title: "Empresas de componentes elétricos" 
+  },
+  { 
+    icon: GraduationCap, 
+    title: "Instituições de formação técnica" 
+  },
 ];
 
 // Circular progress component
@@ -256,8 +272,8 @@ const Qualidade = () => {
         </div>
       </section>
 
-      {/* Partnerships - Enhanced with Icons */}
-      <section className="section-padding bg-card">
+      {/* Partnerships - Category Cards with Icons */}
+      <section className="section-padding bg-background">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -282,20 +298,19 @@ const Qualidade = () => {
             viewport={{ once: true }}
             className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {partnerLogos.map((partner, index) => (
+            {partnerCategories.map((category, index) => (
               <motion.div
-                key={partner.name}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                key={category.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group flex items-center justify-center bg-background/80 rounded-lg p-6 h-32 transition-all duration-300 cursor-pointer"
+                className="group flex flex-col items-center justify-center bg-secondary/50 hover:bg-secondary rounded-xl p-8 h-44 transition-all duration-300 cursor-pointer"
               >
-                <img 
-                  src={partner.logo} 
-                  alt={partner.name}
-                  className="max-h-[70px] w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
-                />
+                <category.icon className="w-8 h-8 text-primary mb-4 group-hover:text-accent transition-colors duration-300" />
+                <p className="text-foreground font-medium text-center leading-snug">
+                  {category.title}
+                </p>
               </motion.div>
             ))}
           </motion.div>

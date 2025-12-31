@@ -69,8 +69,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "E-mail",
-    value: "geral@abengenharia.co.ao",
-    link: "mailto:geral@abengenharia.co.ao",
+    value: "engenhariaesolucoesab@gmail.com",
+    link: "mailto:engenhariaesolucoesab@gmail.com",
     description: "Correio Eletrónico",
   },
   {

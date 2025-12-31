@@ -104,9 +104,9 @@ export const Header = () => {
                     <Phone className="w-5 h-5" />
                     <span>+244 923 456 789</span>
                   </a>
-                  <a href="mailto:geral@abengenharia.co.ao" className="flex items-center gap-3 py-2 text-muted-foreground hover:text-primary transition-colors">
+                  <a href="mailto:engenhariaesolucoesab@gmail.com" className="flex items-center gap-3 py-2 text-muted-foreground hover:text-primary transition-colors">
                     <Mail className="w-5 h-5" />
-                    <span>geral@abengenharia.co.ao</span>
+                    <span>engenhariaesolucoesab@gmail.com</span>
                   </a>
                 </div>
               </div>

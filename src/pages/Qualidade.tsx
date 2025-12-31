@@ -56,10 +56,10 @@ const sustainabilityPractices = [
 ];
 
 const partnerLogos = [
-  { name: "Parceiro 1", logo: "/placeholder.svg" },
-  { name: "Parceiro 2", logo: "/placeholder.svg" },
-  { name: "Parceiro 3", logo: "/placeholder.svg" },
-  { name: "Parceiro 4", logo: "/placeholder.svg" },
+  { name: "Caterpillar", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/Caterpillar_logo.svg/200px-Caterpillar_logo.svg.png" },
+  { name: "Siemens", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Siemens-logo.svg/200px-Siemens-logo.svg.png" },
+  { name: "ABB", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/ABB_logo.svg/200px-ABB_logo.svg.png" },
+  { name: "Schneider Electric", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Schneider_Electric_2007.svg/200px-Schneider_Electric_2007.svg.png" },
 ];
 
 // Circular progress component
@@ -289,12 +289,12 @@ const Qualidade = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group flex items-center justify-center bg-secondary rounded-lg p-8 transition-all duration-300 cursor-pointer"
+                className="group flex items-center justify-center bg-background/80 rounded-lg p-6 h-32 transition-all duration-300 cursor-pointer"
               >
                 <img 
                   src={partner.logo} 
                   alt={partner.name}
-                  className="max-h-[80px] w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
+                  className="max-h-[70px] w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
                 />
               </motion.div>
             ))}

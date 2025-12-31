@@ -11,11 +11,7 @@ import {
   CheckCircle,
   Award,
   Recycle,
-  Scale,
-  Zap,
-  Cpu,
-  GraduationCap,
-  Gauge
+  Scale
 } from "lucide-react";
 import qualityHeroImage from "@/assets/quality-hero.jpg";
 
@@ -59,23 +55,11 @@ const sustainabilityPractices = [
   "Formação contínua em práticas ambientais",
 ];
 
-const partnerships = [
-  {
-    title: "Fabricantes de geradores industriais",
-    icon: Zap,
-  },
-  {
-    title: "Fornecedores de compressores de qualidade",
-    icon: Gauge,
-  },
-  {
-    title: "Empresas de componentes elétricos",
-    icon: Cpu,
-  },
-  {
-    title: "Instituições de formação técnica",
-    icon: GraduationCap,
-  },
+const partnerLogos = [
+  { name: "Parceiro 1", logo: "/placeholder.svg" },
+  { name: "Parceiro 2", logo: "/placeholder.svg" },
+  { name: "Parceiro 3", logo: "/placeholder.svg" },
+  { name: "Parceiro 4", logo: "/placeholder.svg" },
 ];
 
 // Circular progress component
@@ -296,21 +280,22 @@ const Qualidade = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {partnerships.map((partner, index) => (
+            {partnerLogos.map((partner, index) => (
               <motion.div
-                key={partner.title}
+                key={partner.name}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group bg-secondary rounded-lg p-6 text-center hover:bg-primary/5 transition-all duration-300 cursor-pointer"
+                className="group flex items-center justify-center bg-secondary rounded-lg p-8 transition-all duration-300 cursor-pointer"
               >
-                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-muted/50 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                  <partner.icon className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
-                </div>
-                <span className="text-foreground font-medium">{partner.title}</span>
+                <img 
+                  src={partner.logo} 
+                  alt={partner.name}
+                  className="max-h-[80px] w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
+                />
               </motion.div>
             ))}
           </motion.div>

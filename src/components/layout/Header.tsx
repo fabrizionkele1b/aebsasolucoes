@@ -21,13 +21,13 @@ export const Header = () => {
     <>
       <header className="bg-card/95 backdrop-blur-md sticky top-0 z-50 shadow-md">
         <div className="container-custom">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-24 py-4">
             {/* Logo - More breathing room */}
             <Link to="/" className="flex items-center group">
               <img 
                 src={logo} 
                 alt="A&B Engenharia e Soluções" 
-                className="h-14 w-auto object-contain"
+                className="max-h-[65px] w-auto object-contain"
               />
             </Link>
 

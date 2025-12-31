@@ -23,6 +23,7 @@ import serviceGenerators from "@/assets/service-generators.jpg";
 import serviceCompressors from "@/assets/service-compressors.jpg";
 import serviceMaintenance from "@/assets/service-maintenance.jpg";
 import serviceConsulting from "@/assets/service-consulting.jpg";
+import heroServicosImg from "@/assets/hero-servicos.jpg";
 
 const services = [
   {
@@ -130,8 +131,12 @@ const Servicos = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary via-primary-dark to-primary py-20 md:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 industrial-pattern opacity-5"></div>
+      <section className="py-20 md:py-28 relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroServicosImg})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary-dark/85 to-primary/90"></div>
         <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

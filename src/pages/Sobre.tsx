@@ -17,8 +17,6 @@ import {
   MessageCircle
 } from "lucide-react";
 import { useState } from "react";
-import heroSobreImg from "@/assets/hero-sobre.png";
-
 const values = [
   {
     icon: Building2,
@@ -46,12 +44,8 @@ const Sobre = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-20 md:py-28 relative overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroSobreImg})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary-dark/85 to-primary/90"></div>
+      <section className="bg-gradient-to-br from-primary via-primary-dark to-primary py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 industrial-pattern opacity-5"></div>
         <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

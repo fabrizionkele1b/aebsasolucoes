@@ -62,8 +62,8 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Telefone",
-    value: "+244 923 456 789",
-    link: "tel:+244923456789",
+    value: "+244 923 100 632",
+    link: "tel:+244923100632",
     description: "Linha Principal",
   },
   {
@@ -581,11 +581,11 @@ const Contacto = () => {
                   Para assuntos urgentes, ligue diretamente para a nossa linha principal.
                 </p>
                 <a
-                  href="tel:+244923456789"
+                  href="tel:+244923100632"
                   className="inline-flex items-center gap-3 bg-accent text-accent-foreground rounded-lg px-6 py-4 font-semibold hover:bg-accent-light transition-colors"
                 >
                   <Phone className="w-6 h-6" />
-                  +244 923 456 789
+                  +244 923 100 632
                 </a>
               </div>
 

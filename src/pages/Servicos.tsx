@@ -22,7 +22,7 @@ import serviceAutomation from "@/assets/service-automation.jpg";
 import serviceGenerators from "@/assets/service-generators.jpg";
 import serviceCompressors from "@/assets/service-compressors.jpg";
 import serviceMaintenance from "@/assets/service-maintenance.jpg";
-import serviceConsulting from "@/assets/service-consulting.jpg";
+import serviceCompressorRepair from "@/assets/service-compressor-repair.jpg";
 import heroServicosImg from "@/assets/hero-servicos.jpg";
 
 const services = [
@@ -49,15 +49,26 @@ const services = [
     image: serviceAutomation,
   },
   {
-    icon: Lightbulb,
-    title: "Fiscalização e Consultoria",
-    description: "Fiscalização e consultoria técnica, incluindo análise de ruídos – som de espiro.",
+    icon: Wrench,
+    title: "Reparação e Manutenção de Compressores",
+    description: "Serviços especializados de reparação e manutenção de compressores industriais.",
     features: [
-      "Fiscalização técnica",
-      "Análise de ruídos",
-      "Consultoria especializada",
+      "Reparação de compressores",
+      "Manutenção preventiva",
+      "Manutenção corretiva",
     ],
-    image: serviceConsulting,
+    image: serviceCompressorRepair,
+  },
+  {
+    icon: Battery,
+    title: "Venda e Compra de Geradores Industriais",
+    description: "Comercialização de geradores industriais novos e usados com garantia.",
+    features: [
+      "Venda de geradores",
+      "Compra de geradores",
+      "Garantia incluída",
+    ],
+    image: serviceGenerators,
   },
   {
     icon: Gauge,

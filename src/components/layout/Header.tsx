@@ -100,9 +100,9 @@ export const Header = () => {
                 
                 {/* Mobile Contact Info */}
                 <div className="mt-6 pt-4 border-t border-border">
-                  <a href="tel:+244923456789" className="flex items-center gap-3 py-2 text-muted-foreground hover:text-primary transition-colors">
+                  <a href="tel:+244923100632" className="flex items-center gap-3 py-2 text-muted-foreground hover:text-primary transition-colors">
                     <Phone className="w-5 h-5" />
-                    <span>+244 923 456 789</span>
+                    <span>+244 923 100 632</span>
                   </a>
                   <a href="mailto:engenhariaesolucoesab@gmail.com" className="flex items-center gap-3 py-2 text-muted-foreground hover:text-primary transition-colors">
                     <Mail className="w-5 h-5" />

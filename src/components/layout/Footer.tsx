@@ -16,7 +16,7 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/profile.php?id=61585902028216" },
+  { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/people/A-B-Engenharia-e-Solu%C3%A7%C3%B5es-SA/61585902028216/" },
   { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/engenhariaesolucoesab/" },
 ];
 

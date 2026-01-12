@@ -92,7 +92,6 @@ const contactInfo = [
 const Contacto = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState<Partial<ContactFormData>>({
     name: "",
     company: "",
@@ -104,6 +103,8 @@ const Contacto = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [attachedFile, setAttachedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const hiddenFormRef = useRef<HTMLFormElement>(null);
+  const hiddenFileInputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -168,29 +169,28 @@ const Contacto = () => {
     try {
       const validatedData = contactSchema.parse(formData);
       
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      
-      setIsSuccess(true);
-      
-      toast({
-        title: "Pedido enviado com sucesso!",
-        description: "A nossa equipa técnica entrará em contacto em menos de 24 horas.",
-      });
-
-      // Reset form after delay
-      setTimeout(() => {
-        setFormData({
-          name: "",
-          company: "",
-          phone: "",
-          email: "",
-          service: "",
-          message: "",
-        });
-        setAttachedFile(null);
-        setIsSuccess(false);
-      }, 5000);
+      // Populate hidden form with validated data
+      if (hiddenFormRef.current) {
+        const form = hiddenFormRef.current;
+        
+        // Set text field values
+        (form.querySelector('[name="nome"]') as HTMLInputElement).value = validatedData.name;
+        (form.querySelector('[name="empresa"]') as HTMLInputElement).value = formData.company || '';
+        (form.querySelector('[name="telefone"]') as HTMLInputElement).value = validatedData.phone;
+        (form.querySelector('[name="email"]') as HTMLInputElement).value = validatedData.email;
+        (form.querySelector('[name="servico"]') as HTMLInputElement).value = validatedData.service;
+        (form.querySelector('[name="mensagem"]') as HTMLTextAreaElement).value = validatedData.message;
+        
+        // Handle file attachment - copy file to hidden form's file input
+        if (attachedFile && hiddenFileInputRef.current && fileInputRef.current?.files?.[0]) {
+          const dataTransfer = new DataTransfer();
+          dataTransfer.items.add(attachedFile);
+          hiddenFileInputRef.current.files = dataTransfer.files;
+        }
+        
+        // Submit the hidden form (redirects to WhatsApp via PHP)
+        form.submit();
+      }
     } catch (error) {
       if (error instanceof z.ZodError) {
         const newErrors: Record<string, string> = {};
@@ -206,7 +206,6 @@ const Contacto = () => {
           variant: "destructive",
         });
       }
-    } finally {
       setIsSubmitting(false);
     }
   };
@@ -222,6 +221,23 @@ const Contacto = () => {
   return (
     <Layout>
       <FloatingWhatsApp />
+      
+      {/* Hidden form for PHP backend submission */}
+      <form
+        ref={hiddenFormRef}
+        action="https://aebsolucoes.com/sendForm.php"
+        method="POST"
+        encType="multipart/form-data"
+        style={{ display: 'none' }}
+      >
+        <input type="hidden" name="nome" />
+        <input type="hidden" name="empresa" />
+        <input type="hidden" name="telefone" />
+        <input type="hidden" name="email" />
+        <input type="hidden" name="servico" />
+        <textarea name="mensagem" hidden />
+        <input type="file" name="anexo" ref={hiddenFileInputRef} />
+      </form>
       
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary via-primary-dark to-primary py-20 md:py-28 relative overflow-hidden">
@@ -344,27 +360,7 @@ const Contacto = () => {
                   Preencha o formulário abaixo e entraremos em contacto.
                 </p>
 
-                {isSuccess ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="bg-accent/10 border border-accent/30 rounded-xl p-8 text-center"
-                  >
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 0.2, type: "spring" }}
-                    >
-                      <CheckCircle className="w-16 h-16 text-accent mx-auto mb-4" />
-                    </motion.div>
-                    <h3 className="font-heading font-bold text-xl text-foreground mb-2">
-                      Recebemos o seu pedido!
-                    </h3>
-                    <p className="text-muted-foreground">
-                      A nossa equipa técnica entrará em contacto em menos de 24 horas.
-                    </p>
-                  </motion.div>
-                ) : (
+                {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid sm:grid-cols-2 gap-6">
                       {/* Name */}
@@ -562,7 +558,7 @@ const Contacto = () => {
                       )}
                     </Button>
                   </form>
-                )}
+                }
               </div>
             </motion.div>
 
